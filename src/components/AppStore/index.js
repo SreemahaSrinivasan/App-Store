@@ -1,3 +1,11 @@
+import {Component} from 'react'
+
+import './index.css'
+
+import AppItem from '../AppItem'
+
+import TabItem from '../TabItem'
+
 const tabsList = [
   {tabId: 'SOCIAL', displayText: 'Social'},
   {tabId: 'GAMES', displayText: 'Games'},
@@ -288,3 +296,34 @@ const appsList = [
 ]
 
 // Write your code here
+class AppStore extends Component {
+  render() {
+    return (
+      <div className="app-container">
+        <div className="app-store">
+          <h1 className="heading">App Store</h1>
+          <div className="search-input-container">
+            <input className="search-input" type="text" placeholder="Search" />
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/app-store/app-store-search-img.png"
+              alt="search icon"
+              className="search-icon"
+            />
+          </div>
+          <ul className="tabs-list">
+            {tabsList.map(eachTab => (
+              <TabItem tabDetails={eachTab} key={eachTab.tabId} />
+            ))}
+          </ul>
+          <ul className="apps-list">
+            {appsList.map(eachMap => (
+              <AppItem appDetails={eachMap} key={eachMap.appId} />
+            ))}
+          </ul>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default AppStore
